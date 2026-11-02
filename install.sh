@@ -21,9 +21,9 @@ echo ""
 # ── Preflight ────────────────────────────────────────────────────────────────
 command -v apt-get &>/dev/null || die "apt-get not found — this script targets Linux Mint / Ubuntu."
 
-sudo -v || die "This script needs sudo to install packages."
+sudo -n -v 2>/dev/null || sudo -v || die "This script needs sudo to install packages."
 # Keep sudo alive in the background for the duration of the script
-( while true; do sudo -v; sleep 60; done ) & SUDO_KEEP_PID=$!
+( while true; do sudo -n -v 2>/dev/null; sleep 60; done ) & SUDO_KEEP_PID=$!
 trap 'kill "$SUDO_KEEP_PID" 2>/dev/null || true' EXIT
 
 info "Updating apt package lists..."
