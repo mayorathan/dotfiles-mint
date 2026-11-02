@@ -94,7 +94,7 @@ fi
 # ── starship (official installer → ~/.local/bin) ─────────────────────────────
 if ! command -v starship &>/dev/null; then
   info "Installing starship..."
-  curl -sS https://starship.rs/install.sh | sh -s -- -y
+  curl -sS https://starship.rs/install.sh | sh -s -- -y -b "$HOME/.local/bin"
   success "starship installed"
 else
   success "starship already installed"
