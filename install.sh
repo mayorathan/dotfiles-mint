@@ -58,12 +58,23 @@ else
   success "GitHub CLI already installed"
 fi
 
-# ── lazygit (official PPA) ───────────────────────────────────────────────────
+# ── lazygit (GitHub release binary → ~/.local/bin) ───────────────────────────
 if ! command -v lazygit &>/dev/null; then
   info "Installing lazygit..."
-  sudo add-apt-repository -y ppa:lazygit-team/release
-  sudo apt-get update -y
-  sudo apt-get install -y lazygit
+  case "$(uname -m)" in
+    x86_64)        lg_arch="x86_64" ;;
+    aarch64|arm64) lg_arch="arm64" ;;
+    *) die "Unsupported arch for lazygit: $(uname -m)" ;;
+  esac
+  tmp="$(mktemp -d)"
+  url="$(curl -fsSL https://api.github.com/repos/jesseduffield/lazygit/releases/latest \
+    | grep -oE 'https://[^"]+_linux_'"${lg_arch}"'\.tar\.gz' | head -n1)"
+  [[ -n "$url" ]] || die "Could not find a lazygit tarball for arch $lg_arch"
+  curl -fsSL -o "$tmp/lazygit.tar.gz" "$url"
+  tar -xzf "$tmp/lazygit.tar.gz" -C "$tmp"
+  mkdir -p "$HOME/.local/bin"
+  install -m 755 "$tmp/lazygit" "$HOME/.local/bin/lazygit"
+  rm -rf "$tmp"
   success "lazygit installed"
 else
   success "lazygit already installed"
