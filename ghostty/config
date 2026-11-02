@@ -16,6 +16,14 @@ font-family = JetBrainsMono Nerd Font
 # GTK (Linux)
 gtk-titlebar = false
 
+# ── macOS-style copy/paste ───────────────────────────────────────────────────
+# keyd remaps ⌘ → Ctrl and ⌃ → Super, so the physical ⌘ key arrives here as
+# ctrl. Make ⌘+C copy and ⌘+V paste, and keep interrupt (^C) on ⌃ (super).
+keybind = ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard
+keybind = super+c=text:\x03
+keybind = super+v=text:\x16
+
 # Window
 window-height = 45
 window-width = 180
