@@ -19,5 +19,5 @@ alias tconfig='nvim ~/.config/ghostty/config'
 # Misc
 alias h='history'
 alias lg='lazygit'
-alias top='btm'
+alias top='btop'
 

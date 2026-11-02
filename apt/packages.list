@@ -1,5 +1,5 @@
 # apt packages — one per line, blank lines and # comments are ignored.
-# Tools not in Mint's repos (gh, lazygit, ghostty, bottom, starship, atuin,
+# Tools not in Mint's repos (gh, lazygit, ghostty, starship, atuin,
 # and the Nerd Font) are handled separately in install.sh.
 
 # Base / shell
@@ -18,4 +18,5 @@ neovim
 lsd
 fzf
 zoxide
+btop
 ripgrep

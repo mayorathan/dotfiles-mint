@@ -80,22 +80,6 @@ else
   success "Ghostty already installed"
 fi
 
-# ── bottom / btm (GitHub release .deb, not in Mint repos) ────────────────────
-if ! command -v btm &>/dev/null; then
-  info "Installing bottom (btm)..."
-  arch="$(dpkg --print-architecture)"   # amd64 or arm64
-  tmp="$(mktemp -d)"
-  url="$(curl -fsSL https://api.github.com/repos/ClementTsang/bottom/releases/latest \
-    | grep -oE 'https://[^"]+_[^"]+_'"${arch}"'\.deb' | head -n1)"
-  [[ -n "$url" ]] || die "Could not find a bottom .deb for arch $arch"
-  curl -fsSL -o "$tmp/bottom.deb" "$url"
-  sudo apt-get install -y "$tmp/bottom.deb"
-  rm -rf "$tmp"
-  success "bottom installed"
-else
-  success "bottom already installed"
-fi
-
 # ── starship (official installer → ~/.local/bin) ─────────────────────────────
 if ! command -v starship &>/dev/null; then
   info "Installing starship..."
@@ -166,7 +150,21 @@ else
   success "zsh is already the default shell"
 fi
 
-# ── Done ──────────────────────────────────────────────────────────────────────
+# ── Summary ──────────────────────────────────────────────────────────────────
 echo ""
-echo -e "  ${GREEN}All done!${NC} Restart your terminal to apply everything."
+echo -e "  ${GREEN}All done!${NC}"
+echo ""
+
+tools=(zsh git nvim lsd fzf zoxide btop gh lazygit ghostty starship atuin)
+for tool in "${tools[@]}"; do
+  if command -v "$tool" &>/dev/null; then
+    version="$("$tool" --version 2>/dev/null | head -n1)"
+    printf "  ${GREEN}✓${NC}  %-12s %s\n" "$tool" "$version"
+  else
+    printf "  ${RED}✗${NC}  %-12s not found\n" "$tool"
+  fi
+done
+
+echo ""
+echo -e "  ${BLUE}Next:${NC} restart your terminal and run \`zsh\` to apply everything."
 echo ""
