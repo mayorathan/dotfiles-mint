@@ -1,0 +1,51 @@
+# Sourcing functions
+source "$ZDOTDIR/functions"
+zsh_add_file "exports"
+
+# Setting some options for quality-of-life improvements
+zle_highlight=('paste:none')
+DISABLE_AUTO_TITLE="true"
+HISTFILE=~/.config/zsh/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+KEYTIMEOUT=1
+setopt appendhistory
+setopt autocd extendedglob nomatch menucomplete
+setopt interactive_comments
+unsetopt BEEP
+
+# Completions
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+_comp_options+=(globdots)
+autoload -U compinit && compinit
+
+# Colors
+autoload -Uz colors && colors
+
+# User configuration
+bindkey -s '^c' 'clear ^M'
+
+# Sourcing plugins
+zsh_add_plugin "zsh-users/zsh-autosuggestions"
+zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "hlissner/zsh-autopair"
+
+# Sourcing aliases
+zsh_add_file "aliases"
+
+# Removing underlines from zsh-syntax-highlighting
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+
+# fzf (apt ships key bindings under /usr/share/doc/fzf/examples)
+if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+  source /usr/share/doc/fzf/examples/completion.zsh
+fi
+
+eval "$(starship init zsh)"
+eval "$(atuin init zsh)"
+eval "$(zoxide init zsh)"

@@ -1,0 +1,8 @@
+.DS_Store
+**/.DS_Store
+zsh/.zsh_history
+zsh/.!*
+zsh/.zsh_sessions/
+zsh/.zcompdump
+gh/
+configstore/

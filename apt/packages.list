@@ -1,0 +1,21 @@
+# apt packages — one per line, blank lines and # comments are ignored.
+# Tools not in Mint's repos (gh, lazygit, ghostty, bottom, starship, atuin,
+# and the Nerd Font) are handled separately in install.sh.
+
+# Base / shell
+zsh
+git
+curl
+wget
+unzip
+ca-certificates
+software-properties-common
+
+# Editor
+neovim
+
+# Terminal tools
+lsd
+fzf
+zoxide
+ripgrep

@@ -1,0 +1,18 @@
+[submodule "zsh/plugins/zoxide"]
+	path = zsh/plugins/zoxide
+	url = https://github.com/ajeetdsouza/zoxide.git
+[submodule "zsh/plugins/zsh-autopair"]
+	path = zsh/plugins/zsh-autopair
+	url = https://github.com/hlissner/zsh-autopair.git
+[submodule "zsh/plugins/zsh-autosuggestions"]
+	path = zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/plugins/zsh-z"]
+	path = zsh/plugins/zsh-z
+	url = https://github.com/agkozak/zsh-z.git
+[submodule "ghostty/shaders"]
+	path = ghostty/shaders
+	url = https://github.com/sahaj-b/ghostty-cursor-shaders

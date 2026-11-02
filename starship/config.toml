@@ -1,0 +1,36 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+command_timeout = 10000
+
+[directory]
+style = "#F8BD96"
+
+[cmd_duration]
+style = "#F2CECF"
+
+[git_branch]
+style = "#C6AAE8"
+
+[git_state]
+style = "#EBDDAA"
+
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
+[lua]
+disabled = true
+
+[nodejs]
+disabled = true
+
+#[character]
+#success_symbol = "[󰘧](bold green)"
+#error_symbol = "[󰘧](bold red)"
+#vicmd_symbol = "[∀](bold yellow)"
+
+[python]
+# disabled = true
+python_binary = "python3"

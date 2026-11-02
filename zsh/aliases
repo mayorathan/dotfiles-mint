@@ -1,0 +1,23 @@
+# LSD
+alias ls='lsd'
+alias la='lsd -la'
+alias lt='lsd --tree'
+
+# Vim
+alias vi='nvim'
+alias vim='nvim'
+
+# Shell
+alias zsource='source ~/.config/zsh/.zshrc'
+alias zconfig='nvim ~/.config/zsh/.zshrc'
+alias aconfig='nvim ~/.config/zsh/aliases'
+alias econfig='nvim ~/.config/zsh/exports'
+
+# Terminal
+alias tconfig='nvim ~/.config/ghostty/config'
+
+# Misc
+alias h='history'
+alias lg='lazygit'
+alias top='btm'
+

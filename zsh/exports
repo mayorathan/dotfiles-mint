@@ -1,0 +1,8 @@
+export PATH="$HOME/.local/bin:$PATH"
+
+# shell prompt
+export STARSHIP_CONFIG=$HOME/.config/starship/config.toml
+
+# defaults
+export EDITOR='nvim'
+export BROWSER='google-chrome'   # or 'firefox' — Mint ships Firefox by default
