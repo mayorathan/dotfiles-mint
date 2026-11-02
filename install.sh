@@ -164,6 +164,18 @@ else
   success "zsh is already the default shell"
 fi
 
+# ── keyd (keyboard remapping) ────────────────────────────────────────────────
+if command -v keyd &>/dev/null; then
+  if [[ -f "$DOTFILES/keyd/default.conf" ]]; then
+    info "Installing keyd config..."
+    sudo cp "$DOTFILES/keyd/default.conf" /etc/keyd/default.conf
+    sudo systemctl restart keyd
+    success "keyd config installed"
+  fi
+else
+  warn "keyd not installed — skipping. Install it (see README), then re-run."
+fi
+
 # ── Summary ──────────────────────────────────────────────────────────────────
 echo ""
 echo -e "  ${GREEN}All done!${NC}"
