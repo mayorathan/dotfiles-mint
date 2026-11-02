@@ -13,6 +13,9 @@ die()     { printf "${RED}✗${NC}  %s\n" "$1"; exit 1; }
 
 DOTFILES="${DOTFILES:-$HOME/.config}"
 
+# Ensure user-installed binaries (starship, atuin, lazygit) are discoverable
+export PATH="$HOME/.local/bin:$HOME/.atuin/bin:$PATH"
+
 echo ""
 echo "  dotfiles-mint install"
 echo "  ═════════════════════"
