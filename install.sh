@@ -144,7 +144,7 @@ if [[ "$SHELL" != "$ZSH_PATH" ]]; then
   if ! grep -q "$ZSH_PATH" /etc/shells; then
     echo "$ZSH_PATH" | sudo tee -a /etc/shells
   fi
-  chsh -s "$ZSH_PATH"
+  sudo chsh -s "$ZSH_PATH" "$USER"
   success "Default shell set to zsh ($ZSH_PATH)"
 else
   success "zsh is already the default shell"
